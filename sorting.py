@@ -2,6 +2,7 @@ import cmd
 import random
 import sys
 
+from algorithms.heapsort import heapsort, get_heap_steps
 from algorithms.mergesort import mergesort, get_split_steps, get_merge_steps
 from utils import colored_text
 
@@ -30,6 +31,36 @@ class SortingShell(cmd.Cmd):
             else:
                 self.__list = [random.randint(1, 1 << 8) for i in range(size)]
                 print('Created list :', self.__list)
+
+    def do_heapsort(self, *args):
+        "Sort the list using heapsort algorithm : heapsort"
+
+        if len(self.__list) == 0:
+            print('You must create list using "create" command first')
+        else:
+            print('Original list :', self.__list, '\n')
+            print(colored_text('Yello list', 'YELLOW'), ':', 'heap list')
+            print(colored_text(' Blue list', 'BLUE'), ':', 'sorted list by prepending max\n')
+
+            sorted_list = heapsort(self.__list)
+
+            num_heap_steps = len(get_heap_steps().items())
+
+            for i, heap_step in get_heap_steps().items():
+                heap_list = heap_step.arr[:num_heap_steps - i + 1]
+                non_heap_list = heap_step.arr[num_heap_steps - i + 1:]
+
+                if non_heap_list != []:
+                    print('Heap step {0}'.format(i).ljust(13), ':',
+                        colored_text(str(heap_list)[:-1], 'YELLOW') + ',',
+                        colored_text(str(non_heap_list)[1:], 'BLUE'))
+                else:
+                    print('Heap step {0}'.format(i).ljust(13), ':',
+                        colored_text(str(heap_list), 'YELLOW'))
+            else:
+                print()
+
+            print('Sorted list   :', sorted_list)
 
     def do_mergesort(self, *args):
         "Sort the list using mergesort algorithm : mergesort"
