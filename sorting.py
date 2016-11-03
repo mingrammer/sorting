@@ -42,7 +42,7 @@ class SortingShell(cmd.Cmd):
             sorted_list = mergesort(self.__list)
 
             for i, split_step in get_split_steps().items():
-                print('Split step', i, ' :',
+                print('Split step {0}'.format(i).ljust(13), ':',
                     colored_text(' | ', 'BLUE').join([str(e) for e in split_step]))
             else:
                 print()
@@ -50,7 +50,7 @@ class SortingShell(cmd.Cmd):
             num_merge_steps = len(get_merge_steps().items())
 
             for i, merge_step in sorted(get_merge_steps().items(), reverse=True):
-                print('Merge step', num_merge_steps - i + 1, ' :',
+                print('Merge step {0}'.format(num_merge_steps - i + 1).ljust(13), ':',
                     colored_text(' | ', 'BLUE').join([str(e) for e in merge_step]))
             else:
                 print()
