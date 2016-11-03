@@ -16,6 +16,9 @@ class SortingShell(cmd.Cmd):
 
     __list = []
 
+    def emptyline(self, *args):
+        pass
+
     def do_create(self, *args):
         "Create random list by given length : create <length of list (2 to 100)>"
 
