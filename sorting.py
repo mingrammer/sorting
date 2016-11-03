@@ -2,7 +2,7 @@ import cmd
 import random
 import sys
 
-from sorts.mergesort import mergesort, get_split_steps, get_merge_steps
+from algorithms.mergesort import mergesort, get_split_steps, get_merge_steps
 from utils import colored_text
 
 
