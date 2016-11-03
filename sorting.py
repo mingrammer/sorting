@@ -14,7 +14,7 @@ class SortingShell(cmd.Cmd):
     prompt = colored_text('(Sorting) ', 'GREEN')
     file = None
 
-    __list = []
+    _list = []
 
     def emptyline(self, *args):
         pass
@@ -32,20 +32,21 @@ class SortingShell(cmd.Cmd):
             if size > 100 or size < 2:
                 print('Length of list must be in between 2 and 100')
             else:
-                self.__list = [random.randint(1, 1 << 8) for i in range(size)]
-                print('Created list :', self.__list)
+                self._list = [random.randint(1, 1 << 8) for i in range(size)]
+                print('Created list :', self._list)
 
     def do_heapsort(self, *args):
         "Sort the list using heapsort algorithm : heapsort"
 
-        if len(self.__list) == 0:
+        if len(self._list) == 0:
             print('You must create list using "create" command first')
         else:
-            print('Original list :', self.__list, '\n')
+            print('Original list :', self._list, '\n')
+
             print(colored_text('Yello list', 'YELLOW'), ':', 'heap list')
             print(colored_text(' Blue list', 'BLUE'), ':', 'sorted list by prepending max\n')
 
-            sorted_list = heapsort(self.__list)
+            sorted_list = heapsort(self._list)
 
             num_heap_steps = len(get_heap_steps().items())
 
@@ -68,12 +69,12 @@ class SortingShell(cmd.Cmd):
     def do_mergesort(self, *args):
         "Sort the list using mergesort algorithm : mergesort"
 
-        if len(self.__list) == 0:
+        if len(self._list) == 0:
             print('You must create list using "create" command first')
         else:
-            print('Original list :', self.__list, '\n')
+            print('Original list :', self._list, '\n')
 
-            sorted_list = mergesort(self.__list)
+            sorted_list = mergesort(self._list)
 
             for i, split_step in get_split_steps().items():
                 print('Split step {0}'.format(i).ljust(13), ':',
@@ -93,7 +94,9 @@ class SortingShell(cmd.Cmd):
 
     def do_exit(self, *args):
         "Exit the shell."
+
         print('Thank you! Goodbye')
+
         return True
 
 
