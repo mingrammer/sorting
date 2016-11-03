@@ -1,4 +1,6 @@
 # sorting
+![travis](https://travis-ci.org/mingrammer/sorting.svg?branch=master)
+
 Visualize the process of sorting algorithms simply
 
 ![example](images/example.gif)
