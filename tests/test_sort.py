@@ -1,6 +1,6 @@
 import unittest
 
-from sorts.mergesort import mergesort
+from algorithms.mergesort import mergesort
 
 
 class TestSort(unittest.TestCase):
