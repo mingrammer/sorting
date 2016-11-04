@@ -3,6 +3,8 @@
 
 Visualize the process of sorting algorithms simply
 
+Now it shows just each completed steps, so I'll support the code tracing for visualizing the every steps including swapping later.
+
 ![example](images/example.gif)
 
 ## Run
