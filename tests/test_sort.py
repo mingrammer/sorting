@@ -1,3 +1,4 @@
+import random
 import unittest
 
 from algorithms.heapsort import heapsort
@@ -5,19 +6,18 @@ from algorithms.mergesort import mergesort
 
 
 class TestSort(unittest.TestCase):
+    def setUp(self):
+        self.arr = [random.randint(1, 1000) for _ in range(100)]
+
     def test_heapsort(self):
-        arr = [10, 1, 4, 3, 8, 2, 7, 9, 5, 6]
+        heapsorted_arr = heapsort(self.arr)
 
-        arr = heapsort(arr)
-
-        self.assertEqual(arr, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        self.assertEqual(heapsorted_arr, sorted(self.arr))
 
     def test_mergesort(self):
-        arr = [10, 1, 4, 3, 8, 2, 7, 9, 5, 6]
+        mergesorted_arr = mergesort(self.arr)
 
-        arr = mergesort(arr)
-
-        self.assertEqual(arr, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        self.assertEqual(mergesorted_arr, sorted(self.arr))
 
 
 if __name__ == '__main__':
