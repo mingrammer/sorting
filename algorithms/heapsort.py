@@ -21,22 +21,17 @@ class Heap:
 
 
 def max_heapify(heap, i):
-    l_idx, r_idx = 0, 0
+    largest_idx = i
+    l_idx, r_idx = None, None
 
     if 2 * i + 1 < heap.size:
         l_idx = 2 * i + 1
-    else:
-        l_idx = None
 
     if 2 * (i + 1) < heap.size:
         r_idx = 2 * (i + 1)
-    else:
-        r_idx = None
 
     if l_idx is not None and heap.arr[l_idx] > heap.arr[i]:
         largest_idx = l_idx
-    else:
-        largest_idx = i
 
     if r_idx is not None and heap.arr[r_idx] > heap.arr[largest_idx]:
         largest_idx = r_idx
